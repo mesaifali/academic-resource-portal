@@ -8,11 +8,13 @@ include '../includes/db.php';
 
 // Handle resource deletion
 if (isset($_GET['delete'])) {
-    $resource_id = $_GET['delete'];
+    $resource_id = intval($_GET['delete']);
     $sql_delete = "DELETE FROM resources WHERE id='$resource_id'";
     $conn->query($sql_delete);
     header("Location: manage-resources.php");
+    exit();
 }
+
 
 // Fetch approved resources
 $sql_resources = "SELECT * FROM resources WHERE status='approved'";
@@ -31,29 +33,44 @@ $conn->close();
 <body>
     <div class="dashboard-container">
         <h2>Manage Resources</h2>
-        <table>
+        <table class="resources-table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Type</th>
                     <th>Description</th>
+                    <th>File Name</th>
                     <th>Thumbnail</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($resource = $result_resources->fetch_assoc()) { ?>
                     <tr>
-                        <td><?php echo $resource['id']; ?></td>
+                    <?php $thumbnail = 'uploads/thumbnail/' . htmlspecialchars($resource['thumbnail']); ?>
+                        <td><?php echo htmlspecialchars($resource['id']); ?></td>
                         <td><?php echo htmlspecialchars($resource['title']); ?></td>
                         <td><?php echo ucfirst(htmlspecialchars($resource['type'])); ?></td>
                         <td><?php echo htmlspecialchars($resource['description']); ?></td>
-                        <td><img src="../uploads/<?php echo htmlspecialchars($resource['thumbnail']); ?>" alt="Thumbnail" style="width: 100px; height: auto;"></td>
+                        <td><?php echo ucfirst(htmlspecialchars($resource['file_path'])); ?></td>
+
                         <td>
-                            <a href="../uploads/<?php echo htmlspecialchars($resource['file_path']); ?>" download>Download</a>
-                            <a href="edit-resource.php?id=<?php echo $resource['id']; ?>">Edit</a>
-                            <a href="manage-resources.php?delete=<?php echo $resource['id']; ?>" onclick="return confirm('Are you sure you want to delete this resource?');">Delete</a>
+                            <?php if ($resource['thumbnail']) { ?>
+        <img src="../uploads/thumbnail/<?php echo htmlspecialchars($resource['thumbnail']); ?>" alt="Thumbnail" style="width: 100px; height: auto;">
+                            <?php } else { ?>
+                                No Thumbnail
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <!-- Direct download link for admins -->
+<a href="../download.php?file=<?php echo urlencode($resource['file_path']); ?>&type=<?php echo urlencode($resource['type']); ?>">Download</a>|
+
+
+                   <a href="/edit-resource.php?id=<?php echo htmlspecialchars($resource['id']); ?>">Edit</a>|
+
+                            <a href="manage-resources.php?delete=<?php echo htmlspecialchars($resource['id']); ?>" onclick="return confirm('Are you sure you want to delete this resource?');" class="delete-btn">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>

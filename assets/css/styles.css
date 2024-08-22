@@ -416,9 +416,11 @@ margin-top:58px ;
 }
 
 .resource-thumbnail {
-    width: 100%;
-    height: auto;
+    width: 220px;
+    height: 150px;
+    border-radius: 4px;
     border-bottom: 1px solid #e2e8f0;
+
 }
 
 .resource-info {

@@ -32,7 +32,8 @@ $conn->close();
 <body>
     <div class="form-container">
         <h2>View My Info</h2>
-        <p>Name: <?php echo $admin['name']; ?></p>
+       <p>Name: admin </p>
+       <!-- <p>Name: <?php echo $admin['name']; ?></p> -->
         <p>Email: <?php echo $admin['email']; ?></p>
         <p>Username: <?php echo $admin['username']; ?></p>
 

@@ -29,8 +29,15 @@ $conn->close();
 <body>
     <div class="dashboard-container">
         <h2>Admin Dashboard</h2>
-        <p>Total Registered Users: <?php echo $total_users; ?></p>
-        <p>Total Resources Uploaded: <?php echo $total_resources; ?></p>
+
+        <div class="resources-container">
+         <div class="resource-card">
+        <a href="manage-users.php">Total Registered Users: <?php echo $total_users; ?></a></div>
+        <div class="resource-card"> 
+        <a href="manage-resources.php">Total Resources Uploaded: <?php echo $total_resources; ?></a>
+      </div>
+       </div>
+
         <ul>
             <li><a href="manage-users.php">Manage Users</a></li>
             <li><a href="manage-resources.php">Manage Resources</a></li>
@@ -42,4 +49,5 @@ $conn->close();
     </div>
 </body>
 </html>
+
 

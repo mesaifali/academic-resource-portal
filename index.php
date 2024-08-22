@@ -26,4 +26,3 @@ include 'includes/db.php';
     </footer>
 </body>
 </html>
-

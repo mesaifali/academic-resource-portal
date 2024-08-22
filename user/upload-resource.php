@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $target_file = $target_dir . basename($file);
     move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
 
-    $thumb_dir = "../uploads/thumbnails/";
+    $thumb_dir = "../uploads/thumbnail/";
     $thumb_file = $thumb_dir . basename($thumbnail);
     move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $thumb_file);
 

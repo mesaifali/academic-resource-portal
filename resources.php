@@ -37,21 +37,24 @@ $conn->close();
             <div class="resources-container">
                 <?php if ($result_resources->num_rows > 0) { 
                     while ($resource = $result_resources->fetch_assoc()) { 
-                        $thumbnail = htmlspecialchars($resource['thumbnail']);
+
+                        $thumbnail = 'uploads/thumbnail/' . htmlspecialchars($resource['thumbnail']);
                         $title = htmlspecialchars($resource['title']);
                         $type = ucfirst(htmlspecialchars($resource['type']));
                         $description = htmlspecialchars($resource['description']);
                         $file_path = htmlspecialchars($resource['file_path']);
                 ?>
                     <div class="resource-card">
-                        <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="resource-thumbnail">
+                      <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="resource-thumbnail">
                         <div class="resource-info">
                             <h3><?php echo $title; ?></h3>
                             <p class="resource-type">Type: <?php echo $type; ?></p>
                             <p><?php echo $description; ?></p>
-                            <a href="<?php echo isUserLoggedIn() ? 'uploads/' . $file_path : 'signin.php'; ?>" class="download-btn">
-                                <?php echo isUserLoggedIn() ? 'Download' : 'Sign In to Download'; ?>
-                            </a>
+                            
+                            <a href="<?php echo isUserLoggedIn() ? 'download.php?file=' . urlencode($file_path) . '&type=' . urlencode(strtolower($type)) : 'signin.php'; ?>" class="download-btn">
+    <?php echo isUserLoggedIn() ? 'Download' : 'Sign In to Download'; ?>
+</a>
+
                         </div>
                     </div>
                 <?php } 
@@ -61,9 +64,5 @@ $conn->close();
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Academic Resource Portal. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
-

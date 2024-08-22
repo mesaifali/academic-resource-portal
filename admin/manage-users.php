@@ -47,7 +47,9 @@ $conn->close();
                         <td><?php echo $user['email']; ?></td>
                         <td><?php echo $user['username']; ?></td>
                         <td>
-                            <a href="manage-users.php?delete=<?php echo $user['id']; ?>">Delete</a>
+<a href="edit-user.php?id=<?php echo $user['id']; ?>" class="edit-btn">Edit</a>|
+                        <a href="manage-user.php?delete=<?php echo htmlspecialchars($user['id']); ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="delete-btn">Delete</a>
+                         <!--   <a href="manage-users.php?delete=<?php echo $user['id']; ?>">Delete</a> -->
                         </td>
                     </tr>
                 <?php } ?>

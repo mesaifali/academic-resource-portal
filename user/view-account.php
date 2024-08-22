@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = "Password updated successfully.";
     } elseif (isset($_POST['update_profile_picture'])) {
         $profile_picture = $_FILES['profile_picture']['name'];
-        $target_dir = "../uploads/profile_pictures/";
+        $target_dir = "../uploads/profile_picture/";
         $target_file = $target_dir . basename($profile_picture);
         move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file);
 
@@ -46,7 +46,7 @@ $conn->close();
         <div class="profile-section">
             <div class="profile-picture">
                 <?php if (!empty($user['profile_picture'])) { ?>
-                    <img src="../uploads/profile_pictures/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
+                    <img src="../uploads/profile_picture/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
                 <?php } else { ?>
                     <img src="../assets/img/default-profile.png" alt="Default Profile Picture">
                 <?php } ?>
@@ -84,4 +84,3 @@ $conn->close();
     </div>
 </body>
 </html>
-

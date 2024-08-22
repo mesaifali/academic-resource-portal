@@ -48,7 +48,7 @@ $conn->close();
                         <td><?php echo ucfirst($resource['type']); ?></td>
                         <td><?php echo ucfirst($resource['status']); ?></td>
                         <td>
-                           <a href="edit-resource.php?id=<?php echo $resource['id']; ?>">Edit</a> |
+                            <a href="/edit-resource.php?id=<?php echo $resource['id']; ?>" class="edit-btn">Edit</a>|
                             <a href="manage-resources.php?delete=<?php echo $resource['id']; ?>">Delete</a>
                         </td>
                     </tr>

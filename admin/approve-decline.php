@@ -41,7 +41,7 @@ $conn->close();
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Type</th>
+                    <th>Thumbnail</th>
                     <th>Actions</th>
                 </tr>
             </thead>
