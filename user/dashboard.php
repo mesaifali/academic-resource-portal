@@ -22,12 +22,14 @@ $user = $result->fetch_assoc();
     <div class="dashboard-container">
         <h2>Welcome, <?php echo $user['name']; ?></h2>
         <ul>
-            <li><a href="upload-resource.php">Upload Resources</a></li>
-            <li><a href="manage-resources.php">Manage Resources</a></li>
+            <li><a href="upload-resource.php"> Upload Resources</a></li>
+            <li><a href="manage-resources.php">  Manage Resources</a></li>
             <li><a href="view-account.php">View My Account</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="logout.php"> Logout</a></li>
         </ul>
-        <a class="button-back" href="../index.php">Back to Home</a>
+
+
+        <a class="button-back" href="../index.php"> Back to Home</a>
 
     </div>
 </body>

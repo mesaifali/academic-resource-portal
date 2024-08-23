@@ -1,5 +1,5 @@
 <?php
-$servername = "local";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "academic_resource_portal";

@@ -49,8 +49,8 @@ $conn->close();
                 </div>
                 <button type="submit" class="button">Sign In</button>
                <hr class="dashed">
-                <a href="admin-login.php" class="button-admin">Sign in as admin</a>
                 <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+                <a href="admin-login.php" class="button-admin">Sign in as admin</a>
             </form>
             <a href="index.php" class="button-back">Back to Home</a>
         </div>

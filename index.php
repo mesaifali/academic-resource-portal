@@ -9,6 +9,7 @@ include 'includes/db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Academic Resource Portal</title>
+    <script src="//code.tidio.co/lnyjageljxyuxvgexte5odsbsuzoajyx.js" async></script>
 </head>
 <body>
     <header>

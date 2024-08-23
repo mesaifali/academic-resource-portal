@@ -15,6 +15,14 @@ $sql_resources = "SELECT COUNT(*) AS total_resources FROM resources";
 $result_resources = $conn->query($sql_resources);
 $total_resources = $result_resources->fetch_assoc()['total_resources'];
 
+
+// Get the number of pending resources
+$sql_pending_resources = "SELECT COUNT(*) AS total_pending FROM resources WHERE status='pending'";
+$result_pending_resources = $conn->query($sql_pending_resources);
+$total_pending = $result_pending_resources->fetch_assoc()['total_pending'];
+
+
+
 $conn->close();
 ?>
 
@@ -33,9 +41,15 @@ $conn->close();
         <div class="resources-container">
          <div class="resource-card">
         <a href="manage-users.php">Total Registered Users: <?php echo $total_users; ?></a></div>
+
         <div class="resource-card"> 
         <a href="manage-resources.php">Total Resources Uploaded: <?php echo $total_resources; ?></a>
       </div>
+
+       <div class="resource-card"> 
+        <a href="approve-decline.php"> Pending Resources: <?php echo $total_pending; ?></a>
+      </div>
+
        </div>
 
         <ul>
@@ -49,5 +63,4 @@ $conn->close();
     </div>
 </body>
 </html>
-
 

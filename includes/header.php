@@ -28,7 +28,7 @@ function isAdminLoggedIn() {
                 <ul class="navbar-menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                  <!--   <li><a href="contact.php">Contact Us</a></li> -->
                     <li><a href="resources.php">Resources</a></li>
                     <?php if (isUserLoggedIn() || isAdminLoggedIn()): ?>
                         <li><a href="<?php echo isAdminLoggedIn() ? 'admin/dashboard.php' : 'user/dashboard.php'; ?>">Dashboard</a></li>
