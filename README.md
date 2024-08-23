@@ -2,6 +2,10 @@
 <h2>The Whole Code is genrated by A.I<br> 
 yes, All the thing from php, css and sql everything is Pure AI(ChatGpt) Generated.</h2>
 
+<h3>Note: Website is not responsive as of now</h3>
+
+Demo: http://noteshare.free.nf/
+
 User usecase:
 - user can sign-in/sign-up
 - user can upload or download resources
