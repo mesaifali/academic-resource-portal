@@ -42,6 +42,7 @@ $conn->close();
                     <th>ID</th>
                     <th>Title</th>
                     <th>Thumbnail</th>
+                    <th>Type</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -50,8 +51,13 @@ $conn->close();
                     <tr>
                         <td><?php echo $resource['id']; ?></td>
                         <td><?php echo $resource['title']; ?></td>
-                        <td><?php echo $resource['thumbnail']; ?></td>
+                        
+                        <td><?php if ($resource['thumbnail']) { ?>
+        <img src="../uploads/thumbnail/<?php echo htmlspecialchars($resource['thumbnail']); ?>" alt="Thumbnail" style="width: 100px; height: auto;"> <?php } else { ?> No Thumbnail <?php } ?>
+                        </td>
+
                         <td><?php echo ucfirst($resource['type']); ?></td>
+                        
                         <td>
                             <a href="approve-decline.php?approve=<?php echo $resource['id']; ?>">Approve</a> |
                             <a href="approve-decline.php?decline=<?php echo $resource['id']; ?>">Decline</a>
@@ -64,3 +70,4 @@ $conn->close();
     </div>
 </body>
 </html>
+
