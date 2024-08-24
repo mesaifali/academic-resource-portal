@@ -48,7 +48,7 @@ $conn->close();
                 <?php if (!empty($user['profile_picture'])) { ?>
                     <img src="../uploads/profile_picture/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
                 <?php } else { ?>
-                    <img src="../assets/img/default-profile.png" alt="Default Profile Picture">
+                    <img src="../assets/img/default-profile.png" alt="Default Profile Picture" style="width: 150px;height: 150px;border-radius: 50%;">
                 <?php } ?>
             </div>
             <div class="profile-info">
