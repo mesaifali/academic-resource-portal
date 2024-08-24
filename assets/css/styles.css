@@ -11,7 +11,6 @@ background-color: #f7f8fb;
 header {
     background-color: #111215;
     color: #fff;
-    padding: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,7 +24,6 @@ header {
     padding: 0 20px;
 }
  .navbar-brand {
-    font-size: 1.5em;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -36,6 +34,7 @@ header {
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         .navbar-menu li {
@@ -51,15 +50,34 @@ font-size: 1em;
     display: flex;
 }
 
-.navbar-menu a:hover {
-/* color: #fff;
-  padding: 8px 24px;
-  border-radius: 6px;
-  border: 1px solid #0066b2;
-  background: #0066b2; */
-  font-size: 18px;
-  font-weight: 400;
+/* underline Animation on navbar */
+.nav-ani {
+  display: inline-block;
+  position: relative;
 }
+
+.nav-ani:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0%;
+  left: 0;
+  background: #542cb8;
+ transform-origin: bottom right;
+transition: transform 0.3s ease-in;
+}
+
+.nav-ani:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+
+
+
 
 .signin-button{
 color: #fff;
@@ -106,6 +124,7 @@ color: #fff;
 
             .menu-icon {
                 display: block;
+                margin-left:220px;
             }
 
             .navbar {
@@ -355,7 +374,7 @@ button.button:hover {
 
 .form-group {
     margin-bottom: 20px;
-      margin-right: 20px;
+    margin-right: 20px;
 }
 
 .form-group label {
@@ -398,7 +417,7 @@ button.button:disabled, .form-container a.button:disabled {
 
 .button-admin,.button-back{
 margin-top: 10px;
-    width: 380px;
+    width: 94%;
     padding: 10px;
     color:black;
     text-align:center;
@@ -519,18 +538,6 @@ margin-top:40px ;
 }
 
 
-/* Footer Styles */
-footer {
-    background-color: #1a202c;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    height: 20px;
-    width: 100%;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -624,3 +631,132 @@ footer {
             background-color: #007bff;
             color: white;
         }
+
+
+/* footer start */
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: #10182F;
+  border-radius: 6px;
+}
+
+.footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3.5rem;
+  padding: 60px;
+}
+
+.footer-row .footer-col h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  position: relative;
+  left: 2em;
+}
+
+.footer-col .links {
+  margin-top: 20px;
+}
+
+.footer-col .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+
+.footer-col .links li a:hover {
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 20px 0;
+  color: #bfbfbf;
+  max-width: 300px;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-col input {
+  height: 40px;
+  border-radius: 6px;
+  background: none;
+  width: 100%;
+  outline: none;
+  border: 1px solid #7489C6 ;
+  caret-color: #fff;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.footer-col input::placeholder {
+  color: #ccc;
+}
+
+ .footer-col form button {
+  background: #007bff;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.footer-col form button:hover {
+  background: #2B59F0;
+}
+
+.footer-col .icons {
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.footer-col .icons i {
+  color: #afb6c7;
+}
+
+.footer-col .icons i:hover  {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .footer .footer-row {
+    padding: 20px;
+    gap: 1rem;
+  }
+
+  .footer-col form {
+    display: block;
+  }
+
+  .footer-col form :where(input, button) {
+    width: 100%;
+  }
+
+  .footer-col form button {
+    margin: 10px 0 0 0;
+  }
+}

@@ -9,6 +9,8 @@ include 'includes/db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="assets/css/index.css">
+        <link rel="icon" type="image/jpg" href="https://saifali.sirv.com/favicon/favicon-32x32.png">
+
     <title>Academic Resource Portal</title>
     <script src="//code.tidio.co/lnyjageljxyuxvgexte5odsbsuzoajyx.js" async></script>
 </head>
