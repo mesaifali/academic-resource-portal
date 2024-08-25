@@ -64,7 +64,7 @@ font-size: 1em;
   height: 2px;
   bottom: 0%;
   left: 0;
-  background: #542cb8;
+  background: #354edd;
  transform-origin: bottom right;
 transition: transform 0.3s ease-in;
 }
@@ -73,9 +73,6 @@ transition: transform 0.3s ease-in;
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-
-
-
 
 
 
@@ -639,7 +636,7 @@ margin-top:40px ;
   bottom: 0;
   width: 100%;
   background: #10182F;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 
 .footer .footer-row {
@@ -946,3 +943,10 @@ margin-top:40px ;
             line-height: 1.6;
             color: #555;
         }
+
+.copyright{
+    text-align: center;
+  background: #0a0a0b;
+  padding: 5px;
+  color: white;
+}

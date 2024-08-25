@@ -3,50 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Footer HTML and CSS | CodingNepal</title>
+    <title></title>
     <!-- Fonts Links For Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
   <body>
     <section class="footer">
       <div class="footer-row">
-        <div class="footer-col">
-          <h4>Info</h4>
-          <ul class="links">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Compressions</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">Collection</a></li>
+
+<div class="footer-col">
+          <h4>Academic Resources</h4>
+            <ul class="links">
+           <p>Our portal is designed to provide students,educators, and researchers with the best academic resources available.</p><br>
+           <a style= 'color:#fff' href="mailto:academic@gmail.com">Email: academic@gmail.com</a>
+
+          <div class="icons">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-github"></i>
+          </div>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Info</h4>
           <ul class="links">
-            <li><a href="#">Free Designs</a></li>
-            <li><a href="#">Latest Designs</a></li>
-            <li><a href="#">Themes</a></li>
-            <li><a href="#">Popular Designs</a></li>
-            <li><a href="#">Art Skills</a></li>
-            <li><a href="#">New Uploads</a></li>
+            <li><a href="../about.php"?</a></li>
+            <li><a href="../contact.php"?Us</a></li>
+            <li><a href="#">Faq</a></li>?
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="links">
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Notes</a></li>
+            <li><a href="#">Question</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Legal</h4>
           <ul class="links">
-            <li><a href="#">Customer Agreement</a></li>
+            <li><a href="#">Terms and Condtions</a></li>
             <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">GDPR</a></li>
-            <li><a href="#">Security</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Media Kit</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
+      <!--  <div class="footer-col">
           <h4>Newsletter</h4>
           <p>
             Subscribe to our newsletter for a weekly dose
@@ -63,8 +70,15 @@
             <i class="fa-brands fa-linkedin"></i>
             <i class="fa-brands fa-github"></i>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </section>
+                 <div class="copyright">
+            <p>&copy; 2024 Academic Resources. All rights reserved.</p>
+           </div>     
   </body>
 </html>
+
+
+
