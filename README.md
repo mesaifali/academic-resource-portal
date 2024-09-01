@@ -4,7 +4,8 @@ yes, All the thing from php, css and sql everything is Pure AI(ChatGpt) Generate
 
 <h3>Note: Website is not responsive as of now</h3>
 
-Demo: http://noteshare.free.nf/
+Demo: http://amrspt.unaux.com
+
 
 User usecase:
 - user can sign-in/sign-up
