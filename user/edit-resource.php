@@ -1,9 +1,11 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-include 'includes/db.php';
-include 'includes/functions.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../signin.php");
+    exit();
+}
+include '../includes/db.php';
+include '../includes/functions.php';
 
 // Initialize resource data
 $resource_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Edit Resource - Academic Resource Portal</title>
 </head>
 <body>
