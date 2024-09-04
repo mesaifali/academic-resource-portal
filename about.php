@@ -4,6 +4,7 @@ include 'includes/db.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +13,21 @@ include 'includes/db.php';
     <title>About Us - Academic Resource Portal</title>
     <script>
         // FAQ toggle script
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const faqs = document.querySelectorAll('.faq');
             faqs.forEach(faq => {
-                faq.querySelector('h4').addEventListener('click', function () {
+                faq.querySelector('h4').addEventListener('click', function() {
                     faq.classList.toggle('active');
                 });
             });
         });
     </script>
 </head>
+
 <body>
-<header>
+    <header>
         <?php include 'includes/header.php'; ?>
-</header>
+    </header>
     <main>
         <!-- About Us Section -->
         <div class="about-container">
@@ -79,7 +81,7 @@ include 'includes/db.php';
             </div>
         </div>
 
-         <!-- FAQ Section -->
+        <!-- FAQ Section -->
         <div class="faq-container">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-list">
@@ -101,14 +103,12 @@ include 'includes/db.php';
                         <p>Yes, the Academic Resource Portal is completely free for everyone. We believe in making knowledge accessible to all.</p>
                     </div>
                 </div>
-            <!-- Add more FAQs as needed -->
-        </div>
+                <!-- Add more FAQs as needed -->
+            </div>
     </main>
-            <footer>
+    <footer>
         <?php include 'includes/footer.php'; ?>
     </footer>
 </body>
+
 </html>
-
-
-

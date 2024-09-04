@@ -13,12 +13,14 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Resources - Academic Resource Portal</title>
 </head>
+
 <body>
     <header>
         <?php include 'includes/header.php'; ?>
@@ -35,26 +37,26 @@ $conn->close();
 
             <!-- Resources Grid -->
             <div class="resources-container">
-                <?php if ($result_resources->num_rows > 0) { 
-                    while ($resource = $result_resources->fetch_assoc()) { 
+                <?php if ($result_resources->num_rows > 0) {
+                    while ($resource = $result_resources->fetch_assoc()) {
                         $thumbnail = htmlspecialchars($resource['thumbnail']);
                         $title = htmlspecialchars($resource['title']);
                         $type = ucfirst(htmlspecialchars($resource['type']));
                         $description = htmlspecialchars($resource['description']);
                         $file_path = htmlspecialchars($resource['file_path']);
                 ?>
-                    <div class="resource-card">
-                        <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="resource-thumbnail">
-                        <div class="resource-info">
-                            <h3><?php echo $title; ?></h3>
-                            <p class="resource-type">Type: <?php echo $type; ?></p>
-                            <p><?php echo $description; ?></p>
-                            <a href="<?php echo isUserLoggedIn() ? 'uploads/' . $file_path : 'signin.php'; ?>" class="download-btn">
-                                <?php echo isUserLoggedIn() ? 'Download' : 'Sign In to Download'; ?>
-                            </a>
+                        <div class="resource-card">
+                            <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="resource-thumbnail">
+                            <div class="resource-info">
+                                <h3><?php echo $title; ?></h3>
+                                <p class="resource-type">Type: <?php echo $type; ?></p>
+                                <p><?php echo $description; ?></p>
+                                <a href="<?php echo isUserLoggedIn() ? 'uploads/' . $file_path : 'signin.php'; ?>" class="download-btn">
+                                    <?php echo isUserLoggedIn() ? 'Download' : 'Sign In to Download'; ?>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                <?php } 
+                    <?php }
                 } else { ?>
                     <p>No resources found matching your search.</p>
                 <?php } ?>
@@ -65,5 +67,5 @@ $conn->close();
         <p>&copy; 2024 Academic Resource Portal. All Rights Reserved.</p>
     </footer>
 </body>
-</html>
 
+</html>

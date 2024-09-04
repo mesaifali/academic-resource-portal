@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if an admin record was found
     if ($result->num_rows === 1) {
         $admin = $result->fetch_assoc();
-
         // Verify the password
+        //  prisnt admin and password  
         if (password_verify($password, $admin['password'])) {
             // Password matches, start the session and redirect to the admin dashboard
             $_SESSION['admin_id'] = $admin['id'];
@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,26 +59,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <title>Admin Login - Academic Resource Portal</title>
 </head>
+
 <body>
     <div class="form-container">
-        
-        <?php if (!empty($error_message)) { echo "<p class='error-message'>$error_message</p>"; } ?>
+
+        <?php if (!empty($error_message)) {
+            echo "<p class='error-message'>$error_message</p>";
+        } ?>
         <form action="admin-login.php" method="POST">
-        <h2>Admin Login</h2>
-                <div class="form-group">
-                    <label for="username">Username or Email:</label>
-                    <input type="text" name="username" id="username" placeholder="Username or Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                </div>
-         <button type="submit" class="button">Sign In</button>
-         <hr class="dashed">
-          <a href="signin.php" class="button-admin">Sign in as User</a>
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <label for="username">Username or Email:</label>
+                <input type="text" name="username" id="username" placeholder="Username or Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="button">Sign In</button>
+            <hr class="dashed">
+            <a href="signin.php" class="button-admin">Sign in as User</a>
         </form>
-            <a href="index.php" class="button-back">Back to Home</a>
+        <a href="index.php" class="button-back">Back to Home</a>
     </div>
 </body>
-</html>
 
+</html>
