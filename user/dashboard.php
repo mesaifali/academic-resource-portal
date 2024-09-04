@@ -16,7 +16,7 @@ $user = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <title>User Dashboard - Academic Resource Portal</title>
+    <title>User Dashboard - Academic Resource Portals</title>
 </head>
 <body>
     <div class="dashboard-container">
