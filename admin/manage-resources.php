@@ -68,7 +68,7 @@ $conn->close();
 <a href="../download.php?file=<?php echo urlencode($resource['file_path']); ?>&type=<?php echo urlencode($resource['type']); ?>">Download</a>|
 
 
-                   <a href="/edit-resource.php?id=<?php echo htmlspecialchars($resource['id']); ?>">Edit</a>|
+                   <a href="edit-resource.php?id=<?php echo htmlspecialchars($resource['id']); ?>">Edit</a>|
 
                             <a href="manage-resources.php?delete=<?php echo htmlspecialchars($resource['id']); ?>" onclick="return confirm('Are you sure you want to delete this resource?');" class="delete-btn">Delete</a>
                         </td>
