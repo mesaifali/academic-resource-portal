@@ -4,23 +4,31 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../signin.php");
     exit();
 }
+
 include '../includes/db.php';
 include '../includes/functions.php';
 
 // Initialize resource data
 $resource_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$user_id = $_SESSION['user_id'];
 $resource = null;
 
 if ($resource_id > 0) {
-    $sql = "SELECT * FROM resources WHERE id = $resource_id";
-    $result = $conn->query($sql);
+    // Modified query to include a check for the user_id
+    $sql = "SELECT * FROM resources WHERE id = ? AND user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $resource_id, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
         $resource = $result->fetch_assoc();
     } else {
-        echo 'Resource not found.';
-        exit;
+        // Redirect to error page if the resource doesn't belong to the user
+        header("Location: http://noteshare.free.nf/error.php");
+        exit();
     }
+    $stmt->close();
 }
 
 // Handle form submission
@@ -29,21 +37,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
     $type = htmlspecialchars($_POST['type']);
-    $file_path = htmlspecialchars($_POST['file_path']); // assuming the file_path is not changed
-    $thumbnail = htmlspecialchars($_POST['thumbnail']); // assuming the thumbnail is not changed
+    $file_path = htmlspecialchars($_POST['file_path']);
+    $thumbnail = htmlspecialchars($_POST['thumbnail']);
 
     // Update resource in the database
-    $sql = "UPDATE resources SET title='$title', description='$description', type='$type' WHERE id=$resource_id";
+    $sql = "UPDATE resources SET title=?, description=?, type=? WHERE id=? AND user_id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssii", $title, $description, $type, $resource_id, $user_id);
     
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute()) {
         echo 'Resource updated successfully.';
     } else {
         echo 'Error updating resource: ' . $conn->error;
     }
-    $conn->close();
+    $stmt->close();
 }
-?>
 
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="description">Description:</label>
                         <textarea id="description" name="description" rows="5" required><?php echo htmlspecialchars($resource['description']); ?></textarea>
                     </div>
-
                     <div class="form-group">
                         <label for="type">Type:</label>
                         <select id="type" name="type" required>
@@ -76,16 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <option value="question" <?php echo $resource['type'] == 'question' ? 'selected' : ''; ?>>Question</option>
                         </select>
                     </div>
-
-                    <!-- Assuming file_path and thumbnail fields are not editable in this example -->
                     <input type="hidden" name="file_path" value="<?php echo htmlspecialchars($resource['file_path']); ?>">
                     <input type="hidden" name="thumbnail" value="<?php echo htmlspecialchars($resource['thumbnail']); ?>">
-
                     <button type="submit" class="button">Update Resource</button>
-                    <a class="button-back"onclick="history.back()" href="">Back to Manage Resource</a>
+                    <a class="button-back" onclick="history.back()" href="">Back to Manage Resource</a>
                 </form>
             <?php } else { ?>
-                <p>Resource not found.</p>
+                <p>Resource not found or you don't have permission to edit it.</p>
             <?php } ?>
         </section>
     </main>
