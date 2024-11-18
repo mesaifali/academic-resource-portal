@@ -909,7 +909,7 @@ hr.dashed {
 .faq-content {
   padding-left: 10px;
   padding-right: 10px;
-  display: none;
+display: none;
 }
 .faq.active h4 {
   color: #0056b3;

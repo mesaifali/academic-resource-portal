@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="hidden" name="thumbnail" value="<?php echo htmlspecialchars($resource['thumbnail']); ?>">
 
                     <button type="submit" class="button">Update Resource</button>
-                    <a class="button-back"onclick="history.back()" href="">Back to Manage Resource</a>
+                    <a class="button-back" href="manage-resources.php">Back to Manage Resource</a>
                 </form>
             <?php } else { ?>
                 <p>Resource not found.</p>

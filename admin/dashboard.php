@@ -26,41 +26,76 @@ $total_pending = $result_pending_resources->fetch_assoc()['total_pending'];
 $conn->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <title>Admin Dashboard - Academic Resource Portal</title>
+    <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
+
 <body>
-    <div class="dashboard-container">
-        <h2>Admin Dashboard</h2>
+    <div class="container">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar-container">
+            <div class="sidebar" id="sidebar">
+                <div class="logo-links">
+                    <div class="logo">Admin Dashboard</div>
+                    <div class="links">
+                        <div class="submenu-title">Main</div>
+                        <a href="dashboard.php" class="menu-item">Dashboard</a>
+                        <a href="manage-users.php" class="menu-item">Manage Users</a>
+                        <a href="view-info.php" class="menu-item">View My Info</a>
+                        <div class="submenu-title space-up">Resources</div>
+                        <a href="manage-resources.php" class="menu-item">Manage Resources</a>
+                        <a href="manage-approve-resources.php" class="menu-item">Manage Status</a>
+                    </div>
+                </div>
+                <a href="logout.php" class="menu-item logout">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <!-- <div class="header">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/32" alt="User Avatar" class="user-avatar">
+                    <span>Tom Cook</span>
+                </div>
+            </div> -->
+            <div class="content-area">
+                <div class="analytics">Dashboard / Analytics</div>
+                <div style="border: 1px solid #d3d3d3; margin-top: 1rem; margin-bottom: 1rem; "></div>
 
-        <div class="resources-container">
-         <div class="resource-card">
-        <a href="manage-users.php">Total Registered Users: <?php echo $total_users; ?></a></div>
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <h2>Total Registered Users</h2>
+                        <p><?php echo $total_users; ?>+</p>
+                    </div>
+                    <div class="dashboard-card">
 
-        <div class="resource-card"> 
-        <a href="manage-resources.php">Total Resources Uploaded: <?php echo $total_resources; ?></a>
-      </div>
+                        <h2>Total Resources Uploaded</h2>
+                        <p><?php echo $total_resources; ?>+</p>
 
-       <div class="resource-card"> 
-        <a href="approve-decline.php"> Pending Resources: <?php echo $total_pending; ?></a>
-      </div>
+                    </div>
+                    <div class="dashboard-card">
 
-       </div>
+                        <h2>Pending Resources</h2>
+                        <p><?php echo $total_pending; ?></p>
 
-        <ul>
-            <li><a href="manage-users.php">Manage Users</a></li>
-            <li><a href="manage-resources.php">Manage Resources</a></li>
-            <li><a href="approve-decline.php">Approve/Decline Resources</a></li>
-            <li><a href="view-info.php">View My Info</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-            <a class="button-back" href="../index.php">Back to Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
-</html>
 
+</html>

@@ -1,18 +1,20 @@
 <?php
-session_start();
-include 'includes/db.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
+
+include 'includes/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
     $sql = "SELECT * FROM users WHERE username='$username' OR email='$username'";
     $result = $conn->query($sql);
     $user = $result->fetch_assoc();
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header("Location: user/dashboard.php");
+        header("Location: user/dashboard-new.php");
     } else {
         echo "Invalid username or password";
     }
@@ -22,6 +24,7 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +33,10 @@ $conn->close();
 
     <title>Sign In - Academic Resource Portal</title>
 </head>
+
 <body>
     <header>
-        <?php include 'includes/header.php'; ?>
+        <!-- <?php include 'includes/header.php'; ?> -->
     </header>
     <main>
         <div class="form-container">
@@ -50,7 +54,7 @@ $conn->close();
                     <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
                 <button type="submit" class="button">Sign In</button>
-               <hr class="dashed">
+                <hr class="dashed">
                 <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                 <a href="admin-login.php" class="button-admin">Sign in as admin</a>
             </form>
@@ -58,5 +62,5 @@ $conn->close();
         </div>
     </main>
 </body>
-</html>
 
+</html>

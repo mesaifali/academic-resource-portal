@@ -5,16 +5,14 @@ ini_set('display_errors', 1);
 
 session_start();
 require_once 'includes/functions.php'; // Include database connection functions
-require_once 'includes/db.php'; // Include database connection
+require_once 'includes/db.php'; 
 
 $error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve username and password from POST request
     $username = sanitizeInput($_POST['username']);
     $password = sanitizeInput($_POST['password']);
 
-    // Prepare and execute the SQL query to fetch the admin record
     $sql = "SELECT * FROM admin WHERE username = ? OR email = ?";
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
@@ -27,15 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if an admin record was found
     if ($result->num_rows === 1) {
         $admin = $result->fetch_assoc();
-        // Verify the password
-        //  prisnt admin and password  
         if (password_verify($password, $admin['password'])) {
-            // Password matches, start the session and redirect to the admin dashboard
             $_SESSION['admin_id'] = $admin['id'];
-            header("Location: admin/dashboard.php");
+            header("Location: admin/dashboard-new.php");
             exit();
         } else {
-            // Invalid password
             $error_message = "Invalid username or password.";
         }
     } else {

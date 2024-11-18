@@ -13,7 +13,7 @@ include 'includes/db.php';
     <link rel="icon" type="image/jpg" href="https://saifali.sirv.com/favicon/favicon-32x32.png">
 
     <title>Academic Resource Portal</title>
-    <script src="//code.tidio.co/lnyjageljxyuxvgexte5odsbsuzoajyx.js" async></script>
+    <!-- <script src="//code.tidio.co/lnyjageljxyuxvgexte5odsbsuzoajyx.js" async></script> -->
 </head>
 
 <body>
@@ -28,9 +28,11 @@ include 'includes/db.php';
                     Welcome to the<span> Academic <br> Resource</span> Portal
                 </h1>
                 <div class="content-section">
-                    <p>Discover and share the best educational materials in our community. Our portal provides access to a wide range of academic resources, from textbooks to research papers.</p>
+                    <p>Discover and share the best educational materials in our community. Our portal provides access to
+                        a wide range of academic resources, from textbooks to research papers.</p>
 
-                    <p>Join our community to explore a wealth of resources and contribute your own materials to help others succeed in their academic journey.</p>
+                    <p>Join our community to explore a wealth of resources and contribute your own materials to help
+                        others succeed in their academic journey.</p>
 
                 </div>
                 <a href="resources.php" class="btn-get-started">Get Started</a>
