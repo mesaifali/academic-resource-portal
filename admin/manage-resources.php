@@ -78,7 +78,8 @@ $conn->close();
                                 <td><?php echo htmlspecialchars($resource['title']); ?></td>
                                 <td><?php echo ucfirst(htmlspecialchars($resource['type'])); ?></td>
                                 <td style="max-width: 70px; overflow:hidden">
-                                    <?php echo htmlspecialchars($resource['description']); ?></td>
+                                    <?php echo htmlspecialchars($resource['description']); ?>
+                                </td>
                                 <td><?php echo ucfirst(htmlspecialchars($resource['file_path'])); ?></td>
 
                                 <td>
@@ -91,8 +92,8 @@ $conn->close();
                                 </td>
                                 <td>
                                     <!-- Direct download link for admins -->
-                                    <a
-                                        href="../download.php?file=<?php echo urlencode($resource['file_path']); ?>&type=<?php echo urlencode($resource['type']); ?>">Download</a>|
+                                    <a>
+                                        Download</a>|
 
 
                                     <a
