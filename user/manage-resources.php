@@ -12,7 +12,7 @@ if (isset($_GET['delete'])) {
     $resource_id = $_GET['delete'];
     $sql_delete = "DELETE FROM resources WHERE id='$resource_id' AND user_id='$user_id'";
     $conn->query($sql_delete);
-    header("Location: manage-resources-new.php");
+    header("Location: manage-resources.php");
 }
 
 $sql_user_resources = "SELECT * FROM resources WHERE user_id='$user_id'";
