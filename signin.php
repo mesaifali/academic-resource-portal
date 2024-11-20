@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header("Location: user/dashboard-new.php");
+        header("Location: user/upload-resource.php");
     } else {
         echo "Invalid username or password";
     }

@@ -366,6 +366,9 @@ table tbody td a:hover {
   .dashboard-cards {
     grid-template-columns: 1fr;
   }
+ .user-profile-container{
+    grid-template-columns: 1fr;
+  }
 
   .sidebar {
     width: 100%;
@@ -391,7 +394,11 @@ table tbody td a:hover {
   .grid-group {
     display: grid;
     grid-template-columns: 1fr;
+    .col-span-all{
+      grid-column: span 1;
+    }
   }
+ 
   .profile-container {
     display: grid;
     grid-template-columns: 1fr;

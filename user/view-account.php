@@ -52,13 +52,13 @@ $conn->close();
                     <div class="logo">User Dashboard</div>
                     <div class="links">
                         <div class="submenu-title">Main</div>
-                        <a href="dashboard.php" class="menu-item">Dashboard</a>
+                        <!-- <a href="dashboard.php" class="menu-item">Dashboard</a> -->
                         <a href="upload-resource.php" class="menu-item">Upload Resource</a>
                         <a href="manage-resources.php" class="menu-item">Manage Resources</a>
                         <a href="view-account.php" class="menu-item">View My Info</a>
                     </div>
                 </div>
-                <a href="logout.php" class="menu-item logout">View My Info</a>
+                <a href="logout.php" class="menu-item logout">Logout</a>
                 </div>
         </div>
         <div class="main-content">

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $admin = $result->fetch_assoc();
         if (password_verify($password, $admin['password'])) {
             $_SESSION['admin_id'] = $admin['id'];
-            header("Location: admin/dashboard-new.php");
+            header("Location: admin/dashboard.php");
             exit();
         } else {
             $error_message = "Invalid username or password.";
