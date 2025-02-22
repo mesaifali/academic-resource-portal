@@ -10,12 +10,35 @@ $admin_id = $_SESSION['admin_id'];
 $sql_admin = "SELECT * FROM admin WHERE id='$admin_id'";
 $result_admin = $conn->query($sql_admin);
 $admin = $result_admin->fetch_assoc();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $new_password = password_hash($_POST['new_password'], PASSWORD_BCRYPT);
-    $sql_update_password = "UPDATE admin SET password='$new_password' WHERE id='$admin_id'";
-    $conn->query($sql_update_password);
-    echo "Password updated successfully.";
+    $new_password = $_POST['new_password'];
+    $errors = [];
+
+    if (strlen($new_password) < 6) {
+        $errors[] = "New password must be at least 6 characters long";
+    } elseif (!preg_match('/[A-Z]/', $new_password)) {
+        $errors[] = "New password must contain at least one uppercase letter";
+    } elseif (!preg_match('/[a-z]/', $new_password)) {
+        $errors[] = "New password must contain at least one lowercase letter";
+    } elseif (!preg_match('/[0-9]/', $new_password)) {
+        $errors[] = "New password must contain at least one digit";
+    } elseif (!preg_match('/[\W_]/', $new_password)) {
+        $errors[] = "New password must contain at least one special character";
+    }
+
+    if (empty($errors)) {
+        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+        $sql_update_password = "UPDATE admin SET password='$hashed_password' WHERE id='$admin_id'";
+        if ($conn->query($sql_update_password) === TRUE) {
+            echo "Password updated successfully.";
+        } else {
+            echo "Error updating password.";
+        }
+    } else {
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
+    }
 }
 
 $conn->close();
@@ -28,6 +51,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
@@ -37,18 +61,18 @@ $conn->close();
         <div class="sidebar-container">
             <div class="sidebar" id="sidebar">
                 <div class="logo-links">
-                    <div class="logo">Admin Dashboard</div>
+                    <div class="logo"><i class="fas fa-graduation-cap"></i> Admin Dashboard</div>
                     <div class="links">
                         <div class="submenu-title">Main</div>
-                        <a href="dashboard.php" class="menu-item">Dashboard</a>
-                        <a href="manage-users.php" class="menu-item">Manage Users</a>
-                        <a href="view-info.php" class="menu-item">View My Info</a>
+                        <a href="dashboard.php" class="menu-item "><i class="fas fa-home"></i> Dashboard</a>
+                        <a href="manage-users.php" class="menu-item "><i class="fas fa-users"></i> Manage Users</a>
+                        <a href="view-info.php" class="menu-item active-hover"><i class="fas fa-user"></i> View My Info</a>
                         <div class="submenu-title space-up">Resources</div>
-                        <a href="manage-resources.php" class="menu-item">Manage Resources</a>
-                        <a href="manage-approve-resources.php" class="menu-item">Manage Status</a>
+                        <a href="manage-resources.php" class="menu-item"><i class="fas fa-book"></i> Manage Resources</a>
+                        <a href="manage-approve-resources.php" class="menu-item"><i class="fas fa-check-circle"></i> Manage Status</a>
                     </div>
                 </div>
-                <div class="menu-item logout">Logout</div>
+                <a href="logout.php" class="menu-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <div class="main-content">

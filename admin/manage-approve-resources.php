@@ -31,6 +31,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
@@ -40,18 +41,18 @@ $conn->close();
         <div class="sidebar-container">
             <div class="sidebar" id="sidebar">
                 <div class="logo-links">
-                    <div class="logo">Admin Dashboard</div>
+                    <div class="logo"><i class="fas fa-graduation-cap"></i> Admin Dashboard</div>
                     <div class="links">
                         <div class="submenu-title">Main</div>
-                        <a href="dashboard.php" class="menu-item">Dashboard</a>
-                        <a href="manage-users.php" class="menu-item">Manage Users</a>
-                        <a href="view-info.php" class="menu-item">View My Info</a>
+                        <a href="dashboard.php" class="menu-item "><i class="fas fa-home"></i> Dashboard</a>
+                        <a href="manage-users.php" class="menu-item "><i class="fas fa-users"></i> Manage Users</a>
+                        <a href="view-info.php" class="menu-item"><i class="fas fa-user"></i> View My Info</a>
                         <div class="submenu-title space-up">Resources</div>
-                        <a href="manage-resources.php" class="menu-item">Manage Resources</a>
-                        <a href="manage-approve-resources.php" class="menu-item">Manage Status</a>
+                        <a href="manage-resources.php" class="menu-item"><i class="fas fa-book"></i> Manage Resources</a>
+                        <a href="manage-approve-resources.php" class="menu-item active-hover"><i class="fas fa-check-circle"></i> Manage Status</a>
                     </div>
                 </div>
-                <a href="logout.php" class="menu-item logout">Logout</a>
+                <a href="logout.php" class="menu-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <div class="main-content">
@@ -88,8 +89,16 @@ $conn->close();
                                     </td>
                                     <td><?php echo ucfirst(htmlspecialchars($resource['type'])); ?></td>
                                     <td>
-                                        <a href="approve-decline.php?approve=<?php echo $resource['id']; ?>">Approve</a> |
-                                        <a href="approve-decline.php?decline=<?php echo $resource['id']; ?>">Decline</a>
+                                        <a href="approve-decline.php?approve=<?php echo $resource['id']; ?>" 
+                                           class="badge badge-edit" 
+                                           onclick="return confirm('Are you sure you want to approve this resource?');">
+                                            <i class="fas fa-check"></i> Approve
+                                        </a>
+                                        <a href="approve-decline.php?decline=<?php echo $resource['id']; ?>" 
+                                           class="badge badge-delete"
+                                           onclick="return confirm('Are you sure you want to decline this resource?');">
+                                            <i class="fas fa-times"></i> Decline
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>

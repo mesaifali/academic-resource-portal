@@ -21,7 +21,7 @@ header {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 .navbar-brand {
   font-weight: bold;
@@ -303,6 +303,137 @@ button:disabled,
   border-radius: 5px;
   font-size: 1em;
   color: #4a5568;
+}
+
+.how-it-works {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+}
+
+.how-it {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 100px;
+}
+
+.header-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tag {
+  /* background-color: #e1f5fe;
+  color: #0277bd; */
+  background-color: #ffa700;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.how-head {
+  color: #333;
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.step {
+  flex: 1;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background-color: #4c65af;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-icon img {
+  width: 90px;
+  height: 60px;
+}
+
+.step h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+  }
+
+  .step {
+    margin-bottom: 20px;
+  }
+
+  .how-head {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+  .sign-container {
+    width: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-it {
+    padding: 20px;
+  }
+
+  .how-head {
+    font-size: 24px;
+  }
+
+  .step-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .step-icon img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .form-group textarea {
@@ -622,9 +753,12 @@ hr.dashed {
 .footer {
   position: relative;
   bottom: 0;
+
   width: 100%;
   background: #10182f;
   border-radius: 0px;
+
+ 
 }
 
 .footer .footer-row {
@@ -633,6 +767,12 @@ hr.dashed {
   justify-content: space-between;
   gap: 3.5rem;
   padding: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-row .footer-col h4 {
@@ -909,7 +1049,7 @@ hr.dashed {
 .faq-content {
   padding-left: 10px;
   padding-right: 10px;
-display: none;
+  display: none;
 }
 .faq.active h4 {
   color: #0056b3;

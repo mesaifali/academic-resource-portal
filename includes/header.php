@@ -37,7 +37,7 @@ function isAdminLoggedIn()
             <div class="container">
                 <ul class="navbar-menu" id="navbarMenu">
                     <li><a class="nav-ani" href="index.php">Home</a></li>
-                    <li><a class="nav-ani" href="about.php">About Us</a></li>
+                    <li><a class="nav-ani" href="about.php">About us</a></li>
                     <li><a class="nav-ani" href="resources.php">Resources</a></li>
                     <?php if (isUserLoggedIn() || isAdminLoggedIn()): ?>
                         <li><a class="nav-ani"

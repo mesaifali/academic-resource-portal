@@ -25,7 +25,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Dashboard</title>
+    <title>Manage Resources - Academic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
@@ -34,24 +35,25 @@ $conn->close();
         <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
         <div class="sidebar-container">
             <div class="sidebar" id="sidebar">
-            <div class="logo-links">
-                    <div class="logo">User Dashboard</div>
+                <div class="logo-links">
+                    <div class="logo"><i class="fas fa-graduation-cap"></i>User Dashboard</div>
                     <div class="links">
                         <div class="submenu-title">Main</div>
-                        <!-- <a href="dashboard.php" class="menu-item">Dashboard</a> -->
-                        <a href="upload-resource.php" class="menu-item">Upload Resource</a>
-                        <a href="manage-resources.php" class="menu-item">Manage Resources</a>
-                        <a href="view-account.php" class="menu-item">View My Info</a>
+                        <a href="upload-resource.php" class="menu-item "><i class="fas fa-upload"></i> Upload Resource</a>
+                        <a href="manage-resources.php" class="menu-item active-hover"><i class="fas fa-tasks"></i> Manage Resources</a>
+                        <div class="submenu-title space-up">Account</div>
+
+                        <a href="view-account.php" class="menu-item"><i class="fas fa-user"></i> View My Info</a>
                     </div>
                 </div>
-                <a href="logout.php" class="menu-item logout">Logout</a>
+                <a href="logout.php" class="menu-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <div class="main-content">
             <div class="content-area">
                 <div class="analytics">Dashboard / Manage Resources</div>
                 <div style="border: 1px solid #d3d3d3; margin-top: 1rem; margin-bottom: 1rem; "></div>
-                
+
                 <table>
                     <thead>
                         <tr>
@@ -70,8 +72,15 @@ $conn->close();
                                 <td><?php echo ucfirst($resource['type']); ?></td>
                                 <td><?php echo ucfirst($resource['status']); ?></td>
                                 <td>
-                                    <a href="edit-resource.php?id=<?php echo $resource['id']; ?>" class="edit-btn">Edit</a>|
-                                    <a href="manage-resources.php?delete=<?php echo $resource['id']; ?>">Delete</a>
+                                    <a href="edit-resource.php?id=<?php echo $resource['id']; ?>"
+                                        class="badge badge-edit">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a href="manage-resources.php?delete=<?php echo $resource['id']; ?>"
+                                        onclick="return confirm('Are you sure you want to delete this resource?');"
+                                        class="badge badge-delete">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
                                 </td>
                             </tr>
                         <?php } ?>
