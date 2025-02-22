@@ -7,10 +7,27 @@ if (!isset($_SESSION['admin_id'])) {
 include '../includes/db.php';
 
 if (isset($_GET['delete'])) {
-    $user_id = $_GET['delete'];
-    $sql_delete = "DELETE FROM users WHERE id='$user_id'";
-    $conn->query($sql_delete);
+    $user_id = intval($_GET['delete']);
+
+    $stmt = $conn->prepare("SELECT profile_picture FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && $user['profile_picture']) {
+        $profile_pic_path = "../uploads/profile_picture/" . $user['profile_picture'];
+        if (file_exists($profile_pic_path)) {
+            unlink($profile_pic_path);
+        }
+    }
+
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+
     header("Location: manage-users.php");
+    exit();
 }
 
 $sql_users = "SELECT * FROM users";

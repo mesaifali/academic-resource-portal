@@ -9,10 +9,35 @@ include '../includes/db.php';
 $user_id = $_SESSION['user_id'];
 
 if (isset($_GET['delete'])) {
-    $resource_id = $_GET['delete'];
-    $sql_delete = "DELETE FROM resources WHERE id='$resource_id' AND user_id='$user_id'";
-    $conn->query($sql_delete);
+    $resource_id = intval($_GET['delete']);
+    
+    // First get the resource details
+    $stmt = $conn->prepare("SELECT file_path, thumbnail, type FROM resources WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $resource_id, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $resource = $result->fetch_assoc();
+    
+    if ($resource) {
+        $file_path = "../uploads/" . $resource['type'] . "/" . $resource['file_path'];
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+        
+        if ($resource['thumbnail']) {
+            $thumbnail_path = "../uploads/thumbnail/" . $resource['thumbnail'];
+            if (file_exists($thumbnail_path)) {
+                unlink($thumbnail_path);
+            }
+        }
+        
+        $stmt = $conn->prepare("DELETE FROM resources WHERE id = ? AND user_id = ?");
+        $stmt->bind_param("ii", $resource_id, $user_id);
+        $stmt->execute();
+    }
+    
     header("Location: manage-resources.php");
+    exit();
 }
 
 $sql_user_resources = "SELECT * FROM resources WHERE user_id='$user_id'";

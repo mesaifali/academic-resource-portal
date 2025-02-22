@@ -9,12 +9,36 @@ include '../includes/db.php';
 // Handle resource deletion
 if (isset($_GET['delete'])) {
     $resource_id = intval($_GET['delete']);
-    $sql_delete = "DELETE FROM resources WHERE id='$resource_id'";
-    $conn->query($sql_delete);
+
+    // First get the resource details
+    $stmt = $conn->prepare("SELECT file_path, thumbnail, type FROM resources WHERE id = ?");
+    $stmt->bind_param("i", $resource_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $resource = $result->fetch_assoc();
+
+    if ($resource) {
+        $file_path = "../uploads/" . $resource['type'] . "/" . $resource['file_path'];
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+
+        if ($resource['thumbnail']) {
+            $thumbnail_path = "../uploads/thumbnail/" . $resource['thumbnail'];
+            if (file_exists($thumbnail_path)) {
+                unlink($thumbnail_path);
+            }
+        }
+
+        $sql_delete = "DELETE FROM resources WHERE id = ?";
+        $stmt = $conn->prepare($sql_delete);
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+    }
+
     header("Location: manage-resources.php");
     exit();
 }
-
 
 // Fetch approved resources
 $sql_resources = "SELECT * FROM resources WHERE status='approved'";
@@ -92,17 +116,17 @@ $conn->close();
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="../uploads/<?php echo $resource['type'] . '/' . htmlspecialchars($resource['file_path']); ?>" 
-                                       class="badge badge-edit" download>
+                                    <a href="../uploads/<?php echo $resource['type'] . '/' . htmlspecialchars($resource['file_path']); ?>"
+                                        class="badge badge-edit" download>
                                         <i class="fas fa-download"></i> Download
                                     </a>
-                                    <a href="edit-resource.php?id=<?php echo htmlspecialchars($resource['id']); ?>" 
-                                       class="badge badge-edit">
+                                    <a href="edit-resource.php?id=<?php echo htmlspecialchars($resource['id']); ?>"
+                                        class="badge badge-edit">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <a href="manage-resources.php?delete=<?php echo htmlspecialchars($resource['id']); ?>"
-                                       onclick="return confirm('Are you sure you want to delete this resource?');"
-                                       class="badge badge-delete">
+                                        onclick="return confirm('Are you sure you want to delete this resource?');"
+                                        class="badge badge-delete">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
                                 </td>
